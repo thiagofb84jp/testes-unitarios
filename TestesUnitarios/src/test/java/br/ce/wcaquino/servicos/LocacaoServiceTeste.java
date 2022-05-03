@@ -207,5 +207,11 @@ public class LocacaoServiceTeste {
         exception.expectMessage("Usuário negativado");
 
         service.alugarFilme(usuario2, filmes);
+
+        message();
+    }
+
+    public void message () {
+        System.out.println("Here I have a message...");
     }
 }
