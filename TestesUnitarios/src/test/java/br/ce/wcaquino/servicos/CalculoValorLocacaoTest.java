@@ -1,7 +1,6 @@
 package br.ce.wcaquino.servicos;
 
 import br.ce.wcaquino.daos.LocacaoDAO;
-import br.ce.wcaquino.daos.LocacaoDAOFake;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
@@ -11,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,13 +21,20 @@ import java.util.List;
 import static br.ce.wcaquino.builders.FilmeBuilder.umFilme;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.runners.Parameterized.*;
-import static org.mockito.Mockito.mock;
+import static org.junit.runners.Parameterized.Parameter;
+import static org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class CalculoValorLocacaoTest {
 
+    @InjectMocks
     private LocacaoService service;
+
+    @Mock
+    private LocacaoDAO dao;
+
+    @Mock
+    private SPCService spc;
 
     @Parameter
     public List<Filme> filmes;
@@ -39,12 +47,13 @@ public class CalculoValorLocacaoTest {
 
     @Before
     public void setup() {
-        service = new LocacaoService();
+        MockitoAnnotations.initMocks(this);
+        /*service = new LocacaoService();
         LocacaoDAO dao = Mockito.mock(LocacaoDAO.class);
         service.setLocacaoDAO(dao);
 
         SPCService spc = mock(SPCService.class);
-        service.setSpcService(spc);
+        service.setSpcService(spc);*/
     }
 
     private static Filme filme1 = umFilme().agora();

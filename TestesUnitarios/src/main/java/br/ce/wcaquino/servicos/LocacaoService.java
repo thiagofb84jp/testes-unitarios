@@ -20,6 +20,7 @@ public class LocacaoService {
 
     private LocacaoDAO dao;
     private SPCService spcService;
+    private EmailService emailService;
 
     public Locacao alugarFilme(Usuario usuario, List<Filme> filmes) throws FilmesSemEstoqueException, LocadoraException {
         if (usuario == null) {
@@ -36,8 +37,15 @@ public class LocacaoService {
             }
         }
 
-        if (spcService.possuiNegativacao(usuario)) {
-            throw new LocadoraException("Usuário negativado");
+        boolean negativado;
+        try {
+            negativado = spcService.possuiNegativacao(usuario);
+        } catch (Exception e) {
+            throw new LocadoraException("Problemas com SPC, tente novamente");
+        }
+
+        if (negativado) {
+            throw new LocadoraException("Usuário Negativado");
         }
 
         Locacao locacao = new Locacao();
@@ -85,13 +93,38 @@ public class LocacaoService {
         return locacao;
     }
 
-    public void setLocacaoDAO(LocacaoDAO dao) {
+    public void notificarAtrasos() {
+        List<Locacao> locacoes = dao.obterLocacoesPendentes();
+        for (Locacao locacao : locacoes) {
+            if (locacao.getDataRetorno().before(new Date())) {
+                emailService.notificarAtraso(locacao.getUsuario());
+            }
+        }
+    }
+
+    public void prorrogarLocacao(Locacao locacao, int dias) {
+        Locacao novaLocacao = new Locacao();
+
+        novaLocacao.setUsuario(locacao.getUsuario());
+        novaLocacao.setFilmes(locacao.getFilmes());
+        novaLocacao.setDataLocacao(new Date());
+        novaLocacao.setDataRetorno(DataUtils.obterDataComDiferencaDias(dias));
+        novaLocacao.setValor(locacao.getValor() * dias);
+
+        dao.salvar(novaLocacao);
+    }
+
+    /*public void setLocacaoDAO(LocacaoDAO dao) {
         this.dao = dao;
     }
 
     public void setSpcService(SPCService spc) {
         spcService = spc;
     }
+
+    public void setEmailService(EmailService email) {
+        emailService = email;
+    }*/
 
     @Test
     public void sum() {
