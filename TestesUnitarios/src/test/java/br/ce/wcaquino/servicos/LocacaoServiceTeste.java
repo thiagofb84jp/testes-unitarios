@@ -9,10 +9,7 @@ import br.ce.wcaquino.entidades.exceptions.LocadoraException;
 import org.junit.*;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -23,7 +20,7 @@ import static br.ce.wcaquino.builders.FilmeBuilder.umFilme;
 import static br.ce.wcaquino.builders.FilmeBuilder.umFilmeSemEstoque;
 import static br.ce.wcaquino.builders.LocacaoBuilder.umLocacao;
 import static br.ce.wcaquino.builders.UsuarioBuilder.umUsuario;
-import static br.ce.wcaquino.matchers.MatchersProprios.caiNumaSegunda;
+import static br.ce.wcaquino.matchers.MatchersProprios.*;
 import static br.ce.wcaquino.utils.DataUtils.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -275,6 +272,12 @@ public class LocacaoServiceTeste {
 
         service.prorrogarLocacao(locacao, 3);
 
+        ArgumentCaptor<Locacao> argumentCaptor = ArgumentCaptor.forClass(Locacao.class);
+        Mockito.verify(dao).salvar(argumentCaptor.capture());
+        Locacao locacaoRetornada = argumentCaptor.getValue();
 
+        error.checkThat(locacaoRetornada.getValor(), is(12.0));
+        error.checkThat(locacaoRetornada.getDataLocacao(), ehHoje());
+        error.checkThat(locacaoRetornada.getDataRetorno(), ehHojeComDiferencaDias(3));
     }
 }
