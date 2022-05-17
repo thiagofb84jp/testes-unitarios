@@ -7,6 +7,7 @@ import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.entidades.exceptions.FilmesSemEstoqueException;
 import br.ce.wcaquino.entidades.exceptions.LocadoraException;
 import br.ce.wcaquino.utils.DataUtils;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -51,8 +52,27 @@ public class LocacaoService {
         Locacao locacao = new Locacao();
         locacao.setFilmes(filmes);
         locacao.setUsuario(usuario);
-        locacao.setDataLocacao(new Date());
+        locacao.setDataLocacao(Calendar.getInstance().getTime());
 
+        locacao.setValor(calcularValorLocacao(filmes));
+
+        //Entrega no dia seguinte
+        Date dataEntrega = Calendar.getInstance().getTime();
+        dataEntrega = adicionarDias(dataEntrega, 1);
+        if (DataUtils.verificarDiaSemana(dataEntrega, Calendar.SUNDAY)) {
+            dataEntrega = adicionarDias(dataEntrega, 1);
+        }
+
+        locacao.setDataRetorno(dataEntrega);
+
+        //Salvando a locacao...
+        dao.salvar(locacao);
+
+        return locacao;
+    }
+
+    private Double calcularValorLocacao(List<Filme> filmes) {
+        System.out.println("Estou calculando...");
         Double valorTotal = 0d;
         for (int i = 0; i < filmes.size(); i++) {
             Filme filme = filmes.get(i);
@@ -75,22 +95,7 @@ public class LocacaoService {
 
             valorTotal += valorFilme;
         }
-
-        locacao.setValor(valorTotal);
-
-        //Entrega no dia seguinte
-        Date dataEntrega = new Date();
-        dataEntrega = adicionarDias(dataEntrega, 1);
-        if (DataUtils.verificarDiaSemana(dataEntrega, Calendar.SUNDAY)) {
-            dataEntrega = adicionarDias(dataEntrega, 1);
-        }
-
-        locacao.setDataRetorno(dataEntrega);
-
-        //Salvando a locacao...
-        dao.salvar(locacao);
-
-        return locacao;
+        return valorTotal;
     }
 
     public void notificarAtrasos() {
@@ -113,18 +118,6 @@ public class LocacaoService {
 
         dao.salvar(novaLocacao);
     }
-
-    /*public void setLocacaoDAO(LocacaoDAO dao) {
-        this.dao = dao;
-    }
-
-    public void setSpcService(SPCService spc) {
-        spcService = spc;
-    }
-
-    public void setEmailService(EmailService email) {
-        emailService = email;
-    }*/
 
     @Test
     public void sum() {
