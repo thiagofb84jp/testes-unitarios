@@ -5,6 +5,11 @@
     <artifactId>TestesUnitarios</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <build>
+        <testSourceDirectory>
+
+        </testSourceDirectory>
+    </build>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>

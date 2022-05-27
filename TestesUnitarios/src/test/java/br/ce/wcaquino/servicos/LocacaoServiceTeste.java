@@ -6,11 +6,9 @@ import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.entidades.exceptions.FilmesSemEstoqueException;
 import br.ce.wcaquino.entidades.exceptions.LocadoraException;
+import br.ce.wcaquino.runners.ParallelRunner;
 import br.ce.wcaquino.utils.DataUtils;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
@@ -40,9 +38,11 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
+@RunWith(ParallelRunner.class)
 public class LocacaoServiceTeste {
 
-    @InjectMocks @Spy
+    @InjectMocks
+    @Spy
     private LocacaoService service;
     @Mock
     private SPCService spc;
@@ -60,6 +60,12 @@ public class LocacaoServiceTeste {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+        System.out.println("Iniciando 2");
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("Finalizando...");
     }
 
     @Test

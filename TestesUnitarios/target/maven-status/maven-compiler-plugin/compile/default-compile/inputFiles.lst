@@ -1,0 +1,17 @@
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/servicos/LocacaoService.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/matchers/DataDiferencaDiasMatcher.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/matchers/DiaSemanaMatcher.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/servicos/SPCService.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/entidades/exceptions/LocadoraException.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/entidades/exceptions/NaoPodeDividirPorZeroException.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/entidades/Locacao.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/servicos/TimerService.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/entidades/exceptions/FilmesSemEstoqueException.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/entidades/Filme.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/entidades/Usuario.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/servicos/Calculadora.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/matchers/MatchersProprios.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/daos/LocacaoDAO.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/daos/LocacaoDAOFake.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/servicos/EmailService.java
+/Users/thiagoferreira/Documents/Studies/TestesUnitarios/src/main/java/br/ce/wcaquino/utils/DataUtils.java
