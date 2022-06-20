@@ -6,6 +6,8 @@ import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.entidades.exceptions.FilmesSemEstoqueException;
 import br.ce.wcaquino.entidades.exceptions.LocadoraException;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,12 +50,23 @@ public class CalculoValorLocacaoTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+        System.out.println("Iniciando 3...");
         /*service = new LocacaoService();
         LocacaoDAO dao = Mockito.mock(LocacaoDAO.class);
         service.setLocacaoDAO(dao);
 
         SPCService spc = mock(SPCService.class);
         service.setSpcService(spc);*/
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("Finalizando 3...");
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+        System.out.println(CalculadoraTest.ordem.toString());
     }
 
     private static Filme filme1 = umFilme().agora();
@@ -66,7 +79,7 @@ public class CalculoValorLocacaoTest {
 
     @Parameters(name = "{2}")
     public static Collection<Object[]> getParametros() {
-        return Arrays.asList(new Object[][] {
+        return Arrays.asList(new Object[][]{
                 {Arrays.asList(filme1, filme2), 8.0, "2 Filmes: Sem Desconto"},
                 {Arrays.asList(filme1, filme2, filme3), 11.0, "3 Filmes: 25%"},
                 {Arrays.asList(filme1, filme2, filme3, filme4), 13.0, "4 Filmes: 50%"},

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.ce.wcaquino.servicos.CalculadoraTest" time="0.051" tests="6" errors="0" skipped="0" failures="0">
+<testsuite name="br.ce.wcaquino.servicos.LocacaoService" time="0.002" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="18.0.1+0"/>
@@ -12,7 +12,6 @@
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="test" value="CalculadoraTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/Users/thiagoferreira/Documents/Studies/TestesUnitarios"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
@@ -41,7 +40,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.8.5/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="18"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=CalculadoraTest test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.home" value="/usr/local/Cellar/openjdk/18.0.1/libexec/openjdk.jdk/Contents/Home"/>
     <property name="apple.awt.application.name" value="Launcher"/>
     <property name="user.language" value="en"/>
@@ -62,10 +61,5 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="deveMultiplicarDoisValores" classname="br.ce.wcaquino.servicos.CalculadoraTest" time="0.01"/>
-  <testcase name="deveSubtrairDoisValores" classname="br.ce.wcaquino.servicos.CalculadoraTest" time="0.005"/>
-  <testcase name="deveSomarDoisValores" classname="br.ce.wcaquino.servicos.CalculadoraTest" time="0.008"/>
-  <testcase name="deveDividirDoisNumeros" classname="br.ce.wcaquino.servicos.CalculadoraTest" time="0.012"/>
-  <testcase name="deveLancarExcecaoAoDividirPorZero" classname="br.ce.wcaquino.servicos.CalculadoraTest" time="0.01"/>
-  <testcase name="deveDividir" classname="br.ce.wcaquino.servicos.CalculadoraTest" time="0.006"/>
+  <testcase name="sum" classname="br.ce.wcaquino.servicos.LocacaoService" time="0.002"/>
 </testsuite>

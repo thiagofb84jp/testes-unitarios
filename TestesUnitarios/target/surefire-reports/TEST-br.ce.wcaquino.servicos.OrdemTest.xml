@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="br.ce.wcaquino.servicos.OrdemTest" time="0" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.ce.wcaquino.servicos.OrdemTest" time="0.006" tests="4" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="18.0.1+0"/>
@@ -18,8 +18,7 @@
     <property name="java.runtime.version" value="18.0.1+0"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.io.tmpdir" value="/var/folders/76/g55mz89s2412m0ssmhgxlh180000gp/T/"/>
-    <property name="line.separator" value="
-"/>
+    <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
     <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.8.5/libexec/bin/m2.conf"/>
@@ -62,6 +61,24 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="br.ce.wcaquino.servicos.OrdemTest" name="inicia" time="0"/>
-  <testcase classname="br.ce.wcaquino.servicos.OrdemTest" name="verifica" time="0"/>
+  <testcase name="verifica" classname="br.ce.wcaquino.servicos.OrdemTest" time="0.005">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at br.ce.wcaquino.servicos.OrdemTest.verifica(OrdemTest.java:20)
+]]></failure>
+  </testcase>
+  <testcase name="verifica" classname="br.ce.wcaquino.servicos.OrdemTest" time="0.005">
+    <failure message="expected:&lt;1&gt; but was:&lt;0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at br.ce.wcaquino.servicos.OrdemTest.verifica(OrdemTest.java:20)
+]]></failure>
+  </testcase>
+  <testcase name="inicia" classname="br.ce.wcaquino.servicos.OrdemTest" time="0.001"/>
+  <testcase name="inicia" classname="br.ce.wcaquino.servicos.OrdemTest" time="0.002"/>
 </testsuite>
